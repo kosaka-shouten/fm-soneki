@@ -1,0 +1,10 @@
+input~span{
+  display: none;
+}
+input:checked~span {
+  display: inline;
+}
+
+ul {
+  list-style: none;
+}

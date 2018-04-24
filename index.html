@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FM SonEki</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="./style/main.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+  <script src="./js/main.js"></script>
+</head>
+<body>
+<div>
+  <h1>FM SonEki</h1>
+  <form id="setting">
+    <h2>Setting</h2>
+    <ul>
+      <li>
+        <label>値入率</label>
+        <input type="number" name="rate" value="30" />%
+      </li>
+      <li>
+        <label>納品数</label>
+        <input type="number" name="num" value="30" />個
+      </li>
+      <li>
+        <label>契約タイプ</label>
+        <select name="contract">
+          <option value="a">1FC-A</option>
+          <option value="b">1FC-B</option>
+          <option value="c">1FC-C</option>
+          <option value="n">2FC-N</option>
+        </select>
+      </li>
+      <li>fee補正
+        <ul>
+          <li>
+            <label><input type="radio" name="enable_fee" checked />任意入力</label>
+            <input type="number" name="fee" value="50" />%
+          </li>
+          <li>
+            <label><input type="radio" name="enable_fee" />営業総利益から逆算</label>
+            <input type="number" name="profit" value="" />千円
+          </li>
+        </ul>
+      </li>
+      <li>
+        <label><input type="checkbox" name="enable_discompensation" />廃棄補填補正</label>
+        <ul>
+          <li>
+            <label>廃棄金額<input type="number" name="disamount" value="420" />千円（一ヶ月）</label>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <label><input type="checkbox" name="enable_incentive" />1FC複数店奨励金制度補正</label>
+        <ul>
+          <li>
+            <label>店舗数<input type="number" name="store_n" value="11" /></label>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <input type="button" value="calc" onclick="soneki.calc()" />
+    </p>
+  </form>
+</div>
+<div>
+  <h2>廃棄可能数</h2>
+  <p id="disposal"></p>
+</div>
+<canvas id="myChart" width="400" height="400"></canvas>
+</body>
+</html>
